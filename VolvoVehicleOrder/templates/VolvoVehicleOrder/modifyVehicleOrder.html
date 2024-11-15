@@ -1,0 +1,80 @@
+{% extends 'VolvoVehicleOrder/base.html' %}
+{% block modify %}
+<h4 class="text-center alert alert-info">Update Vehicle Orders</h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-4 text-warning-emphasis fw-bold">
+                <div class="row mb-3"> 
+                    <label for="orderNo" class="col-sm-4 col-form-label">Order No:</label> 
+                    <div class="col-sm-6">
+                        {{form.orderNo}}           
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="orderType" class="col-sm-4 col-form-label">Order Type:</label> 
+                    <div class="col-sm-6">
+                        {{form.orderType}}           
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="busarea" class="col-sm-4 col-form-label">Busarea:</label> 
+                    <div class="col-sm-6">
+                        {{form.busarea}}            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="modelId" class="col-sm-4 col-form-label">Model Id:</label> 
+                    <div class="col-sm-6">
+                        {{form.modelId}}            
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 offset text-warning-emphasis fw-bold">
+                <div class="row mb-3"> 
+                    <label for="chassisNo" class="col-sm-6 col-form-label">Chassis:</label> 
+                    <div class="col-sm-6">
+                        {{form.chassisNo}}            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="vin" class="col-sm-6 col-form-label">Vin:</label> 
+                    <div class="col-sm-6">
+                        {{form.vin}}            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="actualDeliveryDate" class="col-sm-6 col-form-label">Actual Delivery Date:</label> 
+                    <div class="col-sm-6">
+                        {{form.actualDeliveryDate}}            
+                    </div>
+                </div>
+            </div>    
+            <div class="col-sm-4 text-warning-emphasis fw-bold">
+                <div class="row mb-3"> 
+                    <label for="orderStatus" class="col-sm-6 col-form-label">Order Status:</label> 
+                    <div class="col-sm-6">
+                        {{form.orderStatus}}            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="orderQty" class="col-sm-6 col-form-label">Quantity:</label> 
+                    <div class="col-sm-6">
+                        {{form.orderQty}}            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="orderCost" class="col-sm-6 col-form-label">Cost:</label> 
+                    <div class="col-sm-6">
+                        {{form.orderCost}}            
+                    </div>
+                </div>
+            </div>
+            <div class="text-center fs-4">
+                <input type="submit" class="col-sm-2 mb-3 fs-4 btn btn-success" value="Update">
+                <a href="{% url 'searchAndDisplay' %}?search_input={{search_input}}" class="col-sm-2 mb-3 fs-4 btn btn-info">Back to Home</a>
+            </div>
+            Message:{{form.message}}
+        </div>
+    </form>  
+{% endblock modify %}

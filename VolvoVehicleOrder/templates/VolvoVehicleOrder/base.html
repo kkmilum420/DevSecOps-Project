@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volvo Vehicle Order</title>
+    <link rel="stylesheet" href="{% static 'VolvoVehicleOrder/css/bootstrap.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center alert alert-danger">Volvo Vehicle Order Management System</h2>
+        {% block content %} {% endblock content %}
+    </div>
+    <div class="container-fluid">
+        {% block resp %} {% endblock resp %}
+    </div>
+    <div class="container mt-5">
+        {% block modify %} {% endblock modify %}
+    </div>
+    
+    <script src="{% static 'VolvoVehicleOrder/js/jquery.js' %}"></script>
+    <script src="{% static 'VolvoVehicleOrder/js/popper.js' %}"></script>
+    <script src="{% static 'VolvoVehicleOrder/js/bootstrap.js' %}"></script>
+</body>
+</html>

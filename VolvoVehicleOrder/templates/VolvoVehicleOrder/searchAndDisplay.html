@@ -1,0 +1,164 @@
+{% extends 'VolvoVehicleOrder/base.html' %}
+{% block content %}
+    <!--Request Screen-->
+    <h4 class="text-center alert alert-info">Search Vehicle Orders</h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-4 text-warning-emphasis fw-bold">
+                <div class="row mb-3"> 
+                    <label for="orderNo" class="col-sm-4 col-form-label">Order No:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{reqform.orderNo.value}}">
+                        {{ reqform.orderNo.errors }}            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="orderType" class="col-sm-4 col-form-label">Order Type:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="orderType" name="orderType" value="{{reqform.orderType.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="busarea" class="col-sm-4 col-form-label">Busarea:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="busarea" name="busarea" value="{{reqform.busarea.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="modelId" class="col-sm-4 col-form-label">Model Id:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="modelId" name="modelId" value="{{reqform.modelId.value}}">            
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 offset text-warning-emphasis fw-bold">
+                <div class="row mb-3"> 
+                    <label for="chassisNo" class="col-sm-6 col-form-label">Chassis:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="chassisNo" name="chassisNo" value="{{reqform.chassisNo.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="vin" class="col-sm-6 col-form-label">Vin:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="vin" name="vin" value="{{reqform.vin.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="requestedDeliveryDate" class="col-sm-6 col-form-label">Requested Delivery Date:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="requestedDeliveryDate" name="requestedDeliveryDate" value="{{reqform.requestedDeliveryDate.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="deliveryLocation" class="col-sm-6 col-form-label">Delivery Location:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="deliveryLocation" name="deliveryLocation" value="{{reqform.deliveryLocation.value}}">            
+                    </div>
+                </div>
+            </div>    
+            <div class="col-sm-4 text-warning-emphasis fw-bold">
+                <div class="row mb-3"> 
+                    <label for="orderStatus" class="col-sm-6 col-form-label">Order Status:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="orderStatus" name="orderStatus" value="{{reqform.orderStatus.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="actaulDeliveryDate" class="col-sm-6 col-form-label">Actual Delivery Date:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="actaulDeliveryDate" name="actaulDeliveryDate" value="{{reqform.actaulDeliveryDate.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="requestedBy" class="col-sm-6 col-form-label">Requested By:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="requestedBy" name="requestedBy" value="{{reqform.requestedBy.value}}">            
+                    </div>
+                </div>
+                <div class="row mb-3"> 
+                    <label for="lastOrderNo" class="col-sm-6 col-form-label">From Order No:</label> 
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="lastOrderNo" name="lastOrderNo" value="{{reqform.lastOrderNo.value}}">            
+                    </div>
+                </div>
+            </div>
+            <div class="text-center fs-4">
+                <input type="submit" class="col-sm-2 mb-3 fs-4 btn btn-success" value="Search">
+            </div>
+        </div>
+    </form>  
+{% endblock content %}
+
+{% block resp %}
+<!--Response Screen-->
+<div class="col-sm-12">
+    <h4 class="text-center alert alert-info">Vehicle Information</h4>
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {% if resform %}
+            {% if response_code == 0 or 1 and response_message == 'SUCCESSFUL'%}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order No</th>
+                            <th scope="col">Busarea</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Order Type</th>
+                            <th scope="col">chassis</th>
+                            <th scope="col">Vin</th>
+                            <th scope="col">Requested Delivery Date</th>
+                            <th scope="col">Delivery Location</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total Cost</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actaul Delivery Date</th>
+                            <th scope="col">Requested By</th>
+                            <th scope="col">Updated By</th>
+                            <th scope="col">Order Creation Date&Time</th>
+                            <th scope="col">Update Date&Time</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ord in resform %}
+                        <tr>
+                            <th scope="row">{{ord.orderNo}}</th>
+                            <td>{{ord.busarea}}</td>
+                            <td>{{ord.modelId}}</td>
+                            <td>{{ord.orderType}}</td>
+                            <td>{{ord.chassisNo}}</td>
+                            <td>{{ord.vin}}</td>
+                            <td>{{ord.requestedDeliveryDate}}</td>
+                            <td>{{ord.deliveryLocation}}</td>
+                            <td>{{ord.orderQty}}</td>
+                            <td>{{ord.orderTotalCost}}</td>
+                            <td>{{ord.orderStatus}}</td>
+                            <td>{{ord.actaulDeliveryDate}}</td>
+                            <td>{{ord.requestedBy}}</td>
+                            <td>{{ord.updatedBy}}</td>
+                            <td>{{ord.orderCreationTimestamp}}</td>
+                            <td>{{ord.updateTimestamp}}</td>
+                            <td>
+                                <a href="{% url 'modifyVehicleOrder' ord.orderNo %}" class="btn btn-warning btn-sm">Modify</a>
+                                <a href="{% url 'deleteVehicleOrder' ord.orderNo %}" class="btn btn-danger btn-sm">Cancel</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% if response_message %}
+                    <div class="alert alert-info">
+                        {{ response_message }}
+                    </div>
+                {% endif %}
+            {% else %}
+                <h4>{{response_code}} - {{response_message}}</h4>
+            {% endif %}    
+        {% else %} 
+           <h4> No Result Available </h4>     
+        {% endif %}     
+    </form>
+</div>
+{% endblock resp %}
